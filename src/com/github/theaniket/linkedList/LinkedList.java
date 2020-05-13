@@ -13,8 +13,7 @@ public class LinkedList {
     }
 
     public void addAtEnd(int data){
-        LinkedListNode tempNode = new LinkedListNode();
-        tempNode = headNode;
+        LinkedListNode tempNode = headNode;
         while(tempNode.next != null){
             tempNode = tempNode.next;
         }
@@ -22,9 +21,8 @@ public class LinkedList {
         tempNode.next = linkedListNode;
     }
 
-    public void find(int data){
-        LinkedListNode tempNode = new LinkedListNode();
-        tempNode = headNode;
+    public boolean find(int data){
+        LinkedListNode tempNode = headNode;
         boolean dataFound = false;
         while (tempNode!=null){
             if(tempNode.data == data){
@@ -39,8 +37,7 @@ public class LinkedList {
     // sort linked list of 0's , 1's and 2's
     public void sortListContainingZerosOnesAndTwos(){
         int[] hash = {0,0,0};
-        LinkedListNode tempNode = LinkedListNode();
-        tempNode = headNode;
+        LinkedListNode tempNode = headNode;
         while (tempNode != null){
             hash[tempNode.data]++;
             tempNode = tempNode.next;
@@ -56,5 +53,16 @@ public class LinkedList {
                 hash[data]--;
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        String result = "";
+        LinkedListNode tempNode = headNode;
+        while (tempNode != null){
+            result = result + "=>" + tempNode.data;
+            tempNode = tempNode.next;
+        }
+        return result;
     }
 }
