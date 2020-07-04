@@ -3,13 +3,17 @@ package com.github.theaniket.linkedList;
 public class LinkedList {
     private LinkedListNode headNode;
     public LinkedList() {
-
     }
 
     public void add(int data){
         LinkedListNode linkedListNode = new LinkedListNode(data);
         linkedListNode.next = headNode;
         headNode = linkedListNode;
+    }
+
+    public void reverse(){
+        LinkedListNode tempNode = headNode;
+        
     }
 
     public void addAtEnd(int data){

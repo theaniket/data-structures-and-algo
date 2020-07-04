@@ -45,7 +45,37 @@ public class MaxHeap {
         heapifyUp();
     }
 
-    private void heapifyUp() {
+    public int poll(){
+        if(this.size == 0)throw  new IllegalStateException();
+        int item = this.tree[0];
+        this.tree[0] = this.tree[this.size - 1];
+        this.size -= 1;
+        heapifyDown();
+        return item;
+    }
+
+    private void heapifyDown() {
+        int currentIndex = 0;
+        while(hasLeftChild(currentIndex)){
+            int biggerChildIndex = getLeftChildIndex(currentIndex);
+            if(hasRightChild(currentIndex) && getRightChild(currentIndex) > getLeftChild(currentIndex)){
+                biggerChildIndex = getRightChildIndex(currentIndex);
+            }
+            if(this.tree[biggerChildIndex] < this.tree[currentIndex]){
+                break;
+            } else {
+                swap(currentIndex,biggerChildIndex);
+            }
+            currentIndex = biggerChildIndex;
+        }
+    }
+
+    public int peek(){
+        if(this.size == 0)throw  new IllegalStateException();
+        return this.tree[0];
+    }
+
+    public void heapifyUp() {
         int currentIndex = this.size - 1;
         while (hasParent(currentIndex) && getParent(currentIndex) < this.tree[currentIndex]){
             swap(getParentIndex(currentIndex),currentIndex);

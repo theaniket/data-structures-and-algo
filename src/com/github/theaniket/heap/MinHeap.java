@@ -2,7 +2,7 @@ package com.github.theaniket.heap;
 
 import java.util.Arrays;
 
-public class MinHeap {
+public class MinHeap implements Heap {
     int[] tree;
     int size;
     int capacity;
@@ -10,6 +10,11 @@ public class MinHeap {
     public MinHeap(int capacity){
         this.capacity = capacity;
         this.tree = new int[this.capacity];
+        this.size = 0;
+    }
+
+    public MinHeap(){
+        this.tree = new int[1];
         this.size = 0;
     }
 
@@ -39,12 +44,12 @@ public class MinHeap {
         }
     }
 
-    private int peek(){
+    public int peek(){
         if(this.size == 0)throw  new IllegalStateException();
         return this.tree[0];
     }
 
-    private int poll(){
+    public int poll(){
         if(this.size == 0)throw  new IllegalStateException();
         int item = this.tree[0];
         this.tree[0] = this.tree[this.size - 1];
@@ -53,7 +58,7 @@ public class MinHeap {
         return item;
     }
 
-    private void add(int value){
+    public void add(int value){
         ensureExtraSpace();
         this.size += 1;
         this.tree[this.size - 1] = value;
