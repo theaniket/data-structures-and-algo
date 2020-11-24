@@ -29,8 +29,7 @@ public class LinkedList {
         while(tempNode.next != null){
             tempNode = tempNode.next;
         }
-        LinkedListNode linkedListNode = new LinkedListNode(data);
-        tempNode.next = linkedListNode;
+        tempNode.next = new LinkedListNode(data);
     }
 
     public boolean find(int data){
