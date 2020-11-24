@@ -78,8 +78,9 @@ public class MaxHeap {
     public void heapifyUp() {
         int currentIndex = this.size - 1;
         while (hasParent(currentIndex) && getParent(currentIndex) < this.tree[currentIndex]){
-            swap(getParentIndex(currentIndex),currentIndex);
-            currentIndex = getParentIndex(currentIndex);
+            int parentIndex = getParentIndex(currentIndex);
+            swap(parentIndex,currentIndex);
+            currentIndex = getParentIndex(parentIndex);
         }
     }
 }

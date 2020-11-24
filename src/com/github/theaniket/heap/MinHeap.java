@@ -84,8 +84,9 @@ public class MinHeap implements Heap {
     private void heapifyUp(){
         int currentIndex = this.size - 1;
         if(hasParent(currentIndex) && getParent(currentIndex) > this.tree[currentIndex]){
-            swap(getParentIndex(currentIndex),currentIndex);
-            currentIndex = getParentIndex(currentIndex);
+            int parentIndex = getParentIndex(currentIndex);
+            swap(parentIndex,currentIndex);
+            currentIndex = parentIndex;
         }
     }
 }

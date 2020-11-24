@@ -25,6 +25,7 @@ public class DepthFirstSearch {
         }
     }
     public List<Integer> solve(List<List<Integer>> graph){
+        this.traversal.clear();
         dfsUtil(graph, 0);
         return this.traversal;
     }

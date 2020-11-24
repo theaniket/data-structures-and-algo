@@ -50,24 +50,26 @@ public class RottenOranges {
 
     public int solve(int[][] a,int r,int c){
         Queue<RottenOrangesNode> queue = new LinkedList<>();
+        boolean[][] visited = new boolean[r][c];
         for(int i=0;i<r;i++){
             for(int j=0;j<c;j++){
                 if(a[i][j] == 2){
                     queue.add(new RottenOrangesNode(i,j,0));
+                    visited[i][j] = true;
                 }
             }
         }
         int timeFrame = 0;
         while (!queue.isEmpty()){
-            RottenOrangesNode rottenOrangesNode = queue.peek();
-            queue.remove();
+            RottenOrangesNode rottenOrangesNode = queue.poll();
             for(int[] neighBours: getNeighbours(rottenOrangesNode.x,rottenOrangesNode.y)){
                 int x = neighBours[0];
                 int y = neighBours[1];
-                if(isValidCell(x,y,r,c) && a[x][y] == 1){
+                if(isValidCell(x,y,r,c) && a[x][y] == 1 && !visited[x][y]){
                     a[x][y] = 2;
                     int currentTimeFrame = rottenOrangesNode.timeFrame;
-                    queue.add(new RottenOrangesNode(x,y,currentTimeFrame));
+                    queue.add(new RottenOrangesNode(x,y,currentTimeFrame + 1));
+                    visited[x][y] = true;
                     if(currentTimeFrame > timeFrame){
                         timeFrame = currentTimeFrame;
                     }

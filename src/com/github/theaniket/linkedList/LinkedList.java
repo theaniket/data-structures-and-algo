@@ -12,8 +12,16 @@ public class LinkedList {
     }
 
     public void reverse(){
-        LinkedListNode tempNode = headNode;
-        
+        LinkedListNode previousNode = null;
+        LinkedListNode currentNode = this.headNode;
+        LinkedListNode nextNode = null;
+        while (currentNode != null){
+            nextNode = currentNode.next;
+            currentNode.next = previousNode;
+            previousNode = currentNode;
+            currentNode = nextNode;
+        }
+        this.headNode = previousNode;
     }
 
     public void addAtEnd(int data){
